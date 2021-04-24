@@ -1,0 +1,24 @@
+﻿@model Library.Domain.Entities.Cart
+
+<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="cartMain">
+    <i class="fa fa-shopping-cart btn btn-outline-dark"></i>
+    @if (Model.lines.Count() > 0)
+    {
+        <span>
+            @Model.lines.Count()
+        </span>
+    }
+</a>
+<div class="dropdown-menu">
+    @if (Model.lines.Count() > 0)
+    {
+        foreach (var line in Model.lines)
+        {
+            <a class="dropdown-item" href="#">
+                @line.Product.ProductName (@line.Quantity)
+            </a>
+        }
+    }
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="@Url.Action("Index", "Cart")">Đến giỏ hàng</a>
+</div>

@@ -1,0 +1,50 @@
+﻿@model Library.WebUI.Models.HomeOrderManageModel
+@{
+    ViewBag.Title = "OrderManage";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    var payment = ViewBag.PaymentMethod as List<Library.Domain.Entities.Payment>;
+}
+<h4>Tên Khách hàng: @Model.customer.CustomerName</h4>
+<h4>Danh sách đơn hàng</h4>
+<div class="row">
+    <div class="col-12">
+        <table class="border table-bordered col-md-8">
+            <tr>
+                <td>Mã số đơn hàng</td>
+                <td>Phương thức thanh toán</td>
+                <td>Ghi chú</td>
+                <td>Giao hàng tận nhà</td>
+                <td>Ngày đặt hàng</td>
+                <td></td>
+            </tr>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.OrderId</td>
+                    <td>@for(int i=0; i< payment.Count;i++)
+                    {
+                        if(payment[i].PaymentId == order.PaymentId)
+                        {
+                            @payment[i].PaymentName;
+                        }
+                    }
+                    </td>
+                    <td>@order.Note</td>
+                    <td>@if(order.Ship==true)
+                    {
+                        TempData["Ship"] = "Có";
+                    }
+                    else
+                    {
+                        TempData["Ship"] = "Không";
+                    }
+                        @TempData["Ship"]
+                    </td>
+                    <td>@order.CreateDate</td>
+                    <td><a href="@Url.Action("ViewOrder","Home", new { OrderId = order.OrderId})">Chi tiết đơn hàng</a></td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>

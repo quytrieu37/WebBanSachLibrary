@@ -1,0 +1,45 @@
+﻿@model Library.WebUI.Models.AdminProductListViewModel 
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="border-bottom">
+    <h3>Danh sách sản phẩm</h3>
+</div>
+<table class="table table-bordered">
+    <tr>
+        <td colspan="4">
+            <a href="@Url.Action("ProductAdd","Admin")" class="btn btn-outline-primary">Thêm mới sách</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Mã sách</td>
+        <td>Tên sách</td>
+        <td>Giá tiền</td>
+        <td>Chức năng</td>
+    </tr>
+    @foreach(var item in Model.Products)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.ProductName</td>
+            <td>@item.Price</td>
+            <td>
+                <a href="@Url.Action("ProductView","Admin", new { id = item.ProductId})" class="btn btn-outline-primary">Xem chi tiết</a>
+                <a href="@Url.Action("ProductEdit","Admin", new { id = item.ProductId})" class="btn btn-outline-info">Sửa</a>
+                <a href="@Url.Action("DeleteProduct","Admin", new { id= item.ProductId})" class="btn btn-outline-danger">Xóa</a>
+            </td>
+        </tr>
+    }
+    <tr>
+        <td colspan="4">
+            @Html.PageLinks(Model.pagingInfo,
+          x => Url.Action("ProductList",
+          "Admin",
+          new { page = x, pageSize = Model.pagingInfo.PageSize }))
+        </td>
+    </tr>
+</table>
+
+

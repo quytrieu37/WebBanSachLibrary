@@ -1,0 +1,27 @@
+﻿@model Library.WebUI.Models.HomeSeachViewModel
+@{
+    ViewBag.Title = "seach";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<div class="border-bottom">
+    <h3>Chi tiết tìm kiếm</h3>
+</div>
+<table class="table table-bordered">
+    <tr>
+        <td>Hình ảnh</td>
+        <td>Tên sách</td>
+        <td>Giá tiền</td>
+        <td>Tác giả</td>
+        <td>Thông tin chi tiết</td>
+    </tr>
+    @foreach (var item in Model.links)
+    {
+        <tr>
+            <td><img src="@item.ProductImage" alt="ProductImg" style="max-width:100px" /></td>
+            <td>@item.ProductName</td>
+            <td>@item.Price</td>
+            <td>@item.Category.CategoryName</td>
+            <td>@Html.Raw(item.Description)</td>
+        </tr>
+    }
+</table>

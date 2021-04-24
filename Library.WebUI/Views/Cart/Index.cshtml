@@ -1,0 +1,60 @@
+﻿@model Library.Domain.Entities.Cart
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Giỏ hàng</h2>
+@if(Model.lines.Count()<=0)
+{
+    <img src="~/Content/img/nullcart.png" alt="cart-null" class="img-fluid" style="padding-left: 30%"/>
+    <h4 style="padding-left: 25%">Giỏ hàng của bạn rỗng vui lòng chọn mua vài món hàng và trở lại</h4>
+    <a href="@Url.Action("Main","Home")" class="btn btn-warning" style="font-size: 2em; margin-left:35%">Tiếp tục mua sắm</a>
+}
+else
+{
+    <div class="row">
+        <div class="col-12 col-md-8">
+            <table class="table table-bordered">
+                <tr>
+                    <td></td>
+                    <td>Tên Sách</td>
+                    <td>Đơn giá</td>
+                    <td>Số lượng</td>
+                    <td>Thành tiền</td>
+                    <td></td>
+                </tr>
+                @foreach(var line in Model.lines)
+                {
+                    <tr>
+                        <td>@line.Product.ProductId</td>
+                        <td>@line.Product.ProductName</td>
+                        <td>@line.Product.Price</td>
+                        <td>
+                            @using (Html.BeginForm("UpdateToCart","Cart", FormMethod.Post, new { }))
+                            {
+                                <input type="hidden" value="@line.Product.ProductId" name="ProductId"/>
+                                <input type="number" value="@line.Quantity" class="form-control" name="Quantity"/>
+                            }
+                        </td>
+                        <td>@(line.Product.Price * line.Quantity)</td>
+                        <td>
+                            @using (Html.BeginForm("RemoveFromCart","Cart", FormMethod.Post))
+                            {
+                                <input type="hidden" name="id" value="@line.Product.ProductId"/>
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="col-12 col-md-4">
+            <a href="@Url.Action("Checkout","Cart")" class="btn btn-outline-primary mt-5">Thanh toán</a>
+            <br />
+            <a href="@Url.Action("Main","Home")" class="btn btn-outline-secondary">Tiếp tục mua hàng</a>
+        </div>
+    </div>
+}

@@ -1,0 +1,42 @@
+﻿@model Library.WebUI.Models.HomeViewOrderModel
+@{
+    ViewBag.Title = "ViewOrder";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    var products = ViewBag.Product as List<Library.Domain.Entities.Product>;
+}
+
+<h3>Chi tiết đơn hàng</h3>
+<div class="row">
+    <div class="col-12">
+        <div class="col-12 col-md-10">
+            <table class="table table-bordered">
+                <tr>
+                    <td>Tên sản phẩm</td>
+                    <td>Tác giả</td>
+                    <td>Hình ảnh</td>
+                    <td>Đơn giá</td>
+                    <td>Số Lượng</td>
+                </tr>
+                @foreach (var orderDetail in Model.orderDetails)
+                {
+                    var product = products[0];
+                    for (int i = 0; i < products.Count; i++)
+                    {
+                        if (products[i].ProductId == orderDetail.ProductId)
+                        {
+                            product = products[i];
+                            break;
+                        }
+                    }
+                    <tr>
+                        <td>@product.ProductName</td>
+                        <td>@product.Category.CategoryName</td>
+                        <td><img src="@product.ProductImage" alt="Tên sản phẩm" class="img-fluid" style="max-height:100px" /></td>
+                        <td>@orderDetail.Price</td>
+                        <td>@orderDetail.Amount</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

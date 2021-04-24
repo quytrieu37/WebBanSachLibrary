@@ -1,0 +1,28 @@
+﻿@model Library.WebUI.Models.HomeMainViewModel 
+@{
+    ViewBag.Title = "Main";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Trang chủ</h2>
+<div class="row">
+    <div class="col-12">
+        <div class="card-deck mb-3 mr-3 text-center">
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-12 col-md-2">
+                    @Html.Partial("_ProductSummary", product)
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+@section js {
+    <script>
+        console.log("trang chu");
+    </script>
+}
+ 

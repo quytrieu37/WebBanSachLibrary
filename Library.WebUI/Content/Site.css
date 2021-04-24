@@ -1,0 +1,263 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+body {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: aliceblue;
+}
+.nav-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-top ul li {
+    list-style-type: none;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.nav-top ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+}
+
+.nav-top ul li button {
+    box-sizing: border-box;
+}
+
+.nav-ul-top1 {
+    display: flex;
+}
+
+.nav-ul-top2 {
+    display: flex;
+}
+
+
+.header-body {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-body-left ul{
+    background-color: white;
+}
+.header-body-left ul li{
+    text-indent: 1em;
+}
+.list-category-item:hover {
+    background-color: #f4eaea;
+}
+.header-body-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header-body-right div {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header-body-right div form input {
+    width: 800px;
+    height: 40px;
+    background-color: #f4eaea;
+    border-color: #eabb28;
+    border-radius: 3px;
+}
+.seach{
+    font-size: 19px;
+    margin-bottom: 3px;
+}
+
+.header-body-right div a {
+    text-decoration: none;
+    color: black;
+    font-size: 2em;
+}
+
+.header-body-left img {
+    /* margin-left: 35px; */
+    padding: 0;
+}
+
+.header-body-left ul li {
+    list-style-type: none;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+/* .header-body-left ul{
+    background-color: burlywood;
+} */
+.footer-top {
+    display: flex;
+    padding: 1.5em;
+    background-color: rgb(83, 83, 83);
+}
+
+.footer-top h5 {
+    color: white;
+    padding-right: 3em;
+    line-height: 32px;
+}
+
+.footer-top form input {
+    width: 350px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    text-indent: 10px;
+}
+
+.footer-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-body ul li {
+    list-style-type: none;
+    border-bottom: 1px solid;
+}
+
+.footer-body ul li a {
+    text-decoration: none;
+    color: black;
+    opacity: 80;
+}
+
+.footer-bot {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-bot ul li {
+    list-style-type: none;
+}
+
+.bot-ul-2 ul.bot-ul-21 {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.bot-ul-2 ul.bot-ul-22 {
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    padding-top: 2em;
+}
+
+.bot-ul-2 ul li i {
+    font-size: 30px;
+    color: rgb(106, 106, 107);
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    height: 650px;
+    justify-content: space-around;
+}
+
+.bot-ul-3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.bot-ul-2 {
+    padding-right: 16em;
+}
+
+.list-category-item a{
+    text-decoration: none;
+    color: black;
+}
+.list-category-item a:hover{
+    color: orangered;
+}
+/*.QLDAAT
+{
+    position: relative;
+}
+.QLDH {
+    display: none;
+    position:absolute;
+    box-sizing: border-box;
+}
+.QLDAAT:hover .QLDH
+{
+    display: block;
+}*/
+@keyframes a {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+#check
+{
+    display: none;
+}
+.modal-test{
+    display: none;
+    position: fixed;
+}
+#check:checked ~ .modal-test
+{
+    display: flex;
+    animation: a 0.6s forwards;
+}
+.email-input
+{
+    position: relative;
+}
+#Login{
+    display: none;
+}
+.modal-Login{
+    background-color: white;
+    display: none;
+    position: fixed;
+    padding : 20px;
+    box-sizing: padding-box;
+    border-radius: 3px;
+}
+#Login:checked ~ .modal-Login{
+    display: block;
+    animation: a 0.6s forwards;
+}
+.modal-close {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    background-color: gray;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    cursor: pointer;
+    text-align: center;
+}
+.usName {
+    position: relative;
+}
+.usName::after {
+    content:"";
+    position:absolute;
+    bottom: 56px;
+    left: 10px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 10px solid white;
+}

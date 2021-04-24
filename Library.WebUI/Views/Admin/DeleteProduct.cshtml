@@ -1,0 +1,21 @@
+﻿@model Library.Domain.Entities.Product
+@{
+    ViewBag.Title = "DeleteProduct";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<p>
+    Bạn thực sự muốn xóa sản phẩm này:
+</p>
+<ul>
+    <li>Tên sản phẩm: @Model.ProductName</li>
+    <li>Đơn giá: @Model.Price</li>
+    <li>Số lượng @Model.Amount</li>
+    <li>Hình Ảnh: <img src="@Model.ProductImage" alt="ProductImage" /></li>
+</ul>
+@using (Html.BeginForm("DeleteProduct", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="ProductId" value="@Model.ProductId" />
+    <button type="submit" class="btn btn-outline-danger">Xóa</button>
+}
+
